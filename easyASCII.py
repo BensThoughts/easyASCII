@@ -185,13 +185,14 @@ def main():
 		
 		parser.add_argument('-d', '--dictionary',
 		                    action='store',
-		                    default='asciiCharacters.db',
+		                    default='asciiCharacters.font',
 		                    help='Db/Font for translation', dest='character_db')
 		
 		parser.add_argument('-o', '--output',
 		                    action='store',
 		                    help='Output results to output_file',
 		                    dest='output_file')
+
 		parser.add_argument('-l', '--lengthwise',
 		                    action='store_true',
 		                    help='Force phrase to run horizontal. Often good \
