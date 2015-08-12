@@ -198,6 +198,7 @@ def main():
 		                    help='Force phrase to run horizontal. Often good \
 		                          for writing output to a file. Usually not so \
 		                          good for console output')
+
 		parser.add_argument('-v', '--vertical',
 		                    action='store_true',
 		                    help='Force phrase to run fully vertical. Often good \
