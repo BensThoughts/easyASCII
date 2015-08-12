@@ -152,7 +152,6 @@ def main():
 		args = parser.parse_args()
 
 		# Setup our variables based on the arguments
-
 		if os.path.exists(args.character_db):
 			dictionary_file = args.character_db
 			print('Using:', dictionary_file, ' as Db for translation')
