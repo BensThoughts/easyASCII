@@ -97,7 +97,7 @@ def write_ascii(phrase_to_translate, alphabet_dictionary, clean_pixel_map,
 		print(err, "in", digit, " unacceptable value")
 
 	except TypeError as err:
-		print("Error: attempt to translate symbol not defined in current Db for translation.")
+		print("Error: attempt to translate symbol not defined in current font file.")
 
 
 def output_to_file(output_file, current_line):
@@ -122,15 +122,16 @@ def main():
 		                                 formatter_class=\
 		                                 argparse.ArgumentDefaultsHelpFormatter)
 
-		parser.add_argument('phrase',
-		                    metavar='Phrase',
+		parser.add_argument('Words',
+		                    metavar='Words',
 		                    nargs='+',
 		                    help='Phrase to be converted to ASCII')
 
-		parser.add_argument('-d', '--dictionary',
+		parser.add_argument('-f', '--font',
 		                    action='store',
-		                    default='asciiCharacters.font',
-		                    help='Db/Font for translation', dest='character_db')
+		                    default='asciiCharacters.ezfnt',
+		                    help='Db/Font used for translation',
+		                    dest='character_db')
 
 		parser.add_argument('-o', '--output',
 		                    action='store',
@@ -154,7 +155,7 @@ def main():
 		# Setup our variables based on the arguments
 		if os.path.exists(args.character_db):
 			dictionary_file = args.character_db
-			print('Using:', dictionary_file, ' as Db for translation')
+			print('Using:', dictionary_file, ' as font for translation')
 		else:
 			parser.print_usage()
 			print('File:', args.character_db, ' does not exist!')
@@ -176,14 +177,14 @@ def main():
 		# We either output verticle, horizontal, or each word on
 		# it's own verticle line
 		if args.vertical:
-			phrase_to_translate = ''.join(args.phrase)
+			phrase_to_translate = ''.join(args.Words)
 			for word in phrase_to_translate:
 				heart_beat()
 		elif args.lengthwise:
-			word = ' '.join(args.phrase)
+			word = ' '.join(args.Words)
 			heart_beat()
 		else:
-			phrase_to_translate = args.phrase
+			phrase_to_translate = args.Words
 			for word in phrase_to_translate:
 				heart_beat()
 
